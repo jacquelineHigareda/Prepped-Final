@@ -33,7 +33,6 @@ public class ViewGroupActivity extends AppCompatActivity implements GroupAdapter
             groupsRecyclerView.setAdapter(groupAdapter);
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error loading groups", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -45,11 +44,8 @@ public class ViewGroupActivity extends AppCompatActivity implements GroupAdapter
                 groups = GroupController.getAllGroups(this);
                 groupAdapter = new GroupAdapter(this, groups, this);
                 groupsRecyclerView.setAdapter(groupAdapter);
-
-                Toast.makeText(this, "Group deleted", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(this, "Error deleting group", Toast.LENGTH_SHORT).show();
             }
         }
     }

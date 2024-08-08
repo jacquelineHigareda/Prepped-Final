@@ -1,6 +1,7 @@
 package edu.utsa.css3443.prepped;
 
 import android.content.Context;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -21,7 +22,6 @@ public class GroupController {
 
     public static void updateGroup(Context context, Group updatedGroup) throws IOException {
         List<Group> groups = getAllGroups(context);
-
 
         for (int i = 0; i < groups.size(); i++) {
             Group group = groups.get(i);

@@ -9,14 +9,16 @@ import androidx.appcompat.app.AppCompatActivity;
 public class HomeActivity extends AppCompatActivity {
     private Button viewGroupButton;
     private Button createGroupButton;
+    private Button createEventButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_main);
 
         viewGroupButton = findViewById(R.id.viewGroupButton);
         createGroupButton = findViewById(R.id.createGroupButton);
+        createEventButton = findViewById(R.id.createEventButton);
 
         viewGroupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +32,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, CreateGroupActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        createEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, CreateEventActivity.class);
                 startActivity(intent);
             }
         });

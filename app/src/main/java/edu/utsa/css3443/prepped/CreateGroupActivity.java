@@ -1,6 +1,7 @@
 package edu.utsa.css3443.prepped;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -34,26 +35,26 @@ public class CreateGroupActivity extends AppCompatActivity {
         createGroupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String groupName = groupNameEditText.getText().toString().trim();
-                String groupColor = groupColorEditText.getText().toString().trim();
-                String groupDescription = groupDescriptionEditText.getText().toString().trim();
-
-                if (!groupName.isEmpty() && !groupColor.isEmpty() && !groupDescription.isEmpty()) {
-                    try {
-                        Group newGroup = new Group(String.valueOf(System.currentTimeMillis()), groupName, groupColor, groupDescription);
-                        GroupController.addGroup(CreateGroupActivity.this, newGroup);
-
-                        Toast.makeText(CreateGroupActivity.this, "Group created", Toast.LENGTH_SHORT).show();
-                        finish();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Toast.makeText(CreateGroupActivity.this, "Failed to create group", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(CreateGroupActivity.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                }
+                createGroup();
             }
         });
+    }
+
+    private void createGroup() {
+        String groupName = groupNameEditText.getText().toString().trim();
+        String groupColor = groupColorEditText.getText().toString().trim();
+        String groupDescription = groupDescriptionEditText.getText().toString().trim();
+        String groupId = groupName;
+
+        if (!groupName.isEmpty() && !groupColor.isEmpty() && !groupDescription.isEmpty()) {
+            Group newGroup = new Group(groupId, groupName, groupColor, groupDescription);
+            try {
+                GroupController.addGroup(this, newGroup);
+                finish();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

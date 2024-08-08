@@ -15,8 +15,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title="Create Group" />
 
-    <!-- Your existing layout components -->
-
     <EditText
         android:id="@+id/groupNameEditText"
         android:layout_width="match_parent"
@@ -37,7 +35,8 @@
 
     <Button
         android:id="@+id/createGroupButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Group" />
+        android:text="Create Group"
+        android:layout_marginTop="16dp" />
 </LinearLayout>

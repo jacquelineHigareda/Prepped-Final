@@ -106,4 +106,9 @@ public class Group {
         return events;
     }
 
+    @Override
+    public String toString() {
+        return groupName;
+    }
+
 }
